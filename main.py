@@ -15,7 +15,6 @@ def printCols():
 def printTable(db):
     row_list.clear()
     index = 0
-    db.execute("SELECT * FROM %s" %table)
     for i in db:
         index += 1
         row_list.update({index:i})
@@ -54,7 +53,7 @@ def search_by(db,connector):
         name = input()
         db.execute("""SELECT *
                       FROM %s
-                      WHERE `NAME` LIKE '%s%%'""" %(table, name))
+                      WHERE `NAME` LIKE '%%%s%%'""" %(table, name))
         try:
             printTable(db)
         except TypeError:
@@ -190,8 +189,6 @@ def deleteCol(db,connector):
     else:
         return
 
-        
-
 #Open the JSON with the SQL information
 with open("config.json") as json_read:
     data = json.load(json_read)
@@ -211,12 +208,16 @@ while choice != '6':
     if choice == '1':
         add_data(cursor,database)
     if choice == '2':
+        cursor.execute("SELECT * FROM %s" %table)
         deleteCol(cursor,database)
     if choice == '3':
+        cursor.execute("SELECT * FROM %s" %table)
         printTable(cursor)
     if choice == '4':
+        cursor.execute("SELECT * FROM %s" %table)
         search_by(cursor,database)
     if choice == '5':
+        cursor.execute("SELECT * FROM %s" %table)
         changeCol(cursor,database)
 cursor.close()
 database.close()
