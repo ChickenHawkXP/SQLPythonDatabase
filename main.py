@@ -103,9 +103,12 @@ def search_by(db,connector):
 #A function that allows you change column data
 def changeCol(db,connector):
     records = printTable(db)
-    if records < 1:
-        print("There are no records to change!\n")
-        return
+    try:
+        if records < 1:
+            print("There are no records to change!\n")
+            return
+    except TypeError:
+        pass
     choice = int(input("\nSelect an entry to change: "))
     if choice in row_list:
         data = row_list.get(choice)
