@@ -4,7 +4,7 @@ import mysql.connector
 table = "PYTABLE"
 row_list = dict()
 def menu():
-    print('What would you like to do?:\n [1] Add user to the database\n [2] Remove user from database\n [3] Output database\n [4] Search by column\n [5] Edit Column\n [6] Exit')
+    print('\nWhat would you like to do?:\n [1] Add user to the database\n [2] Remove user from database\n [3] Output database\n [4] Search by column\n [5] Edit Column\n [6] Exit')
 
 def param_menu():
     print("\nWhat parameters would you like to search by?\n [1] Name\n [2] Age\n [3] Date of Birth\n [4] Height\n [5] Number of pets\n [6] Back\n")
